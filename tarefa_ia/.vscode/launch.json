@@ -1,0 +1,11 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "tarefa_ia",
+      "request": "launch",
+      "type": "dart",
+      "toolArgs": ["--dart-define=GEMINI_API_KEY=AQ.Ab8RN6J2TX-Db9T7MureS15UuJnmdTezOkzIuVzfhqEkkcBkJw"]
+    }
+  ]
+}
