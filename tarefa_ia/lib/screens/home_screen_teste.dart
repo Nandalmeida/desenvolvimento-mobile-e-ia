@@ -53,47 +53,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ..showSnackBar(SnackBar(content: Text(msg)));
   }
 
-  /// Exclui a tarefa e oferece "Desfazer" por alguns segundos.
-  void _deleteTask(Task task) {
-    final index = _tasks.indexWhere((t) => t.id == task.id);
-    if (index < 0) return;
-    setState(() => _tasks.removeAt(index));
-    _persist();
-    if (!mounted) return;
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(SnackBar(
-        content: const Text('Tarefa excluída'),
-        action: SnackBarAction(
-          label: 'Desfazer',
-          onPressed: () {
-            setState(() => _tasks.insert(index.clamp(0, _tasks.length), task));
-            _persist();
-          },
-        ),
-      ));
-  }
-
-  Future<void> _confirmDeleteTask(Task task) async {
-    final ok = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('Excluir tarefa?'),
-        content: Text('"${task.title}" e suas subtarefas serão removidas.'),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancelar')),
-          FilledButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Excluir')),
-        ],
-      ),
-    );
-    if (ok == true) _deleteTask(task);
-  }
-
-  void _deleteSubtask(Task task, SubTask sub) {
-    setState(() => task.subtasks.remove(sub));
-    _persist();
-  }
-
   Future<void> _addTaskDialog() async {
     final controller = TextEditingController();
     int priority = 1;
@@ -261,7 +220,10 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.only(right: 20),
         child: const Icon(Icons.delete, color: Colors.white),
       ),
-      onDismissed: (_) => _deleteTask(task),
+      onDismissed: (_) {
+        setState(() => _tasks.removeWhere((t) => t.id == task.id));
+        _persist();
+      },
       child: ExpansionTile(
         key: PageStorageKey(task.id),
         leading: Checkbox(
@@ -291,11 +253,6 @@ class _HomeScreenState extends State<HomeScreen> {
               controlAffinity: ListTileControlAffinity.leading,
               value: s.done,
               title: Text(s.title),
-              secondary: IconButton(
-                tooltip: 'Excluir subtarefa',
-                icon: const Icon(Icons.close, size: 18),
-                onPressed: () => _deleteSubtask(task, s),
-              ),
               onChanged: (v) {
                 setState(() => s.done = v ?? false);
                 _persist();
@@ -316,18 +273,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       icon: const Icon(Icons.auto_awesome, size: 18),
                       label: const Text('Sugerir subtarefas com IA'),
                     ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 56, bottom: 8),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: TextButton.icon(
-                onPressed: () => _confirmDeleteTask(task),
-                style: TextButton.styleFrom(foregroundColor: Colors.red),
-                icon: const Icon(Icons.delete_outline, size: 18),
-                label: const Text('Excluir tarefa'),
-              ),
             ),
           ),
         ],
