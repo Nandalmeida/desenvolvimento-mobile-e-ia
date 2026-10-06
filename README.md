@@ -4,7 +4,7 @@ Aplicativo móvel em Flutter para gerenciar tarefas (to-do list) com um **assist
 
 A proposta completa do projeto (situação-problema, escopo, requisitos e cronograma) está em [PROPOSTA.md](PROPOSTA.md).
 
-## 8. Integrantes
+## Integrantes
 | RA | Nome |
 |----|------|
 | 25002085 | Maria Fernanda de Almeida Lopes Borges |
