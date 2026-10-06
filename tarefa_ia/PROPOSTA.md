@@ -1,10 +1,10 @@
-# TarefaIA — Proposta de Solução
+# TarefAI — Proposta de Solução
 
 ## 1. Situação-problema
 
-**Empresa (fictícia):** *Studio Brisa*, agência de design com 8 pessoas.
+**Empresa:** *Citur*, empresa de turismo em Poços de Caldas (Onde a integrante Maria Fernanda de Almeida trabalha).
 
-**Problema real:** as demandas chegam de forma desorganizada (mensagens longas de clientes, anotações soltas, áudios transcritos, e-mails). Cada profissional precisa ler tudo, separar o que é tarefa, decidir prioridade e quebrar em passos. Esse trabalho manual consome tempo, e tarefas acabam esquecidas ou mal priorizadas.
+**Problema real:** as demandas chegam de forma desorganizada (mensagens longas de solicitante, anotações soltas, e-mails). Cada profissional precisa ler tudo, separar o que é tarefa, decidir prioridade e quebrar em passos. Esse trabalho manual consome tempo, e tarefas acabam esquecidas ou mal priorizadas.
 
 **Por que cabe em 3 meses:** o escopo é um único fluxo (texto livre → tarefas organizadas), sem backend próprio, sem login, sem notificações. A parte de IA consome uma API pronta.
 
@@ -53,7 +53,7 @@
 - Prompt com formato de saída fixo (JSON) e baixa temperatura para respostas estáveis.
 - Usuário sempre confirma o que a IA sugeriu antes de salvar (humano no controle).
 - Tratamento de resposta malformada, vazia ou fora do formato.
-
+f
 ## 4. Fluxo de dados com a IA
 
 ```
@@ -85,9 +85,9 @@
 ```bash
 flutter create tarefa_ia          # gera as pastas android/ ios/ etc.
 # copie pubspec.yaml e a pasta lib/ deste projeto por cima
-cd tarefa_ia
+cd pastas/tarefa_ia
 flutter pub get
-flutter run --dart-define=GEMINI_API_KEY=SUA_CHAVE
+flutter run flutter run -d emulator-5554 --dart-define=GEMINI_API_KEY=AQ.XXXX
 ```
 
 A chave gratuita é gerada no Google AI Studio. Se o nome do modelo padrão for descontinuado, passe outro com `--dart-define=GEMINI_MODEL=...`.
