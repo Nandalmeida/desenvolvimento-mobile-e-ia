@@ -95,7 +95,3 @@ A chave gratuita é gerada no Google AI Studio. Se o nome do modelo padrão for 
 **Android (build release):** adicione no `android/app/src/main/AndroidManifest.xml`, dentro de `<manifest>`:
 `<uses-permission android:name="android.permission.INTERNET"/>`
 
-## 8. Integrantes
-RA:25002085   NOME: Maria Fernanda de Almeida Lopes Borges
-RA:25000517   NOME: Leonardo da Silva Fonseca
-

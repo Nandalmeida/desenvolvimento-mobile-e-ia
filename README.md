@@ -1,8 +1,12 @@
-# TarefaIA
+# TarefaAI
 
 Aplicativo móvel em Flutter para gerenciar tarefas (to-do list) com um **assistente de IA** que transforma texto livre em tarefas organizadas e priorizadas.
 
 A proposta completa do projeto (situação-problema, escopo, requisitos e cronograma) está em [PROPOSTA.md](PROPOSTA.md).
+
+## 8. Integrantes
+RA:25002085   NOME: Maria Fernanda de Almeida Lopes Borges
+RA:25000517   NOME: Leonardo da Silva Fonseca
 
 ## O que o app faz
 
